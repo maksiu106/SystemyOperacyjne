@@ -1,0 +1,22 @@
+Krzysztof Czarnowus, grupa 1, 22.05.2023 r.
+
+-----------------------------------------------------------------------
+POLECENIE:
+
+Przy pomocy pamieci dzielonej oraz semaforow standardu POSIX zaimplementowac problem ,,producenta–konsumenta” z cwiczenia 4 przedstawiony w skrypcie pseudokodem. Zamiast potoku uzywac N-elementowego bufora cyklicznego (tzn. po dojsciu do konca bufora wracamy na jego poczatek) umieszczonego w pamieci dzielonej, gdzie elementem bufora jest pewna ustalona porcja bajtow (> 1). Dostep do wspolnego bufora synchronizowac przy pomocy semaforow nazwanych standardu POSIX. Programy producenta i konsumenta uruchamiac przez execlp w procesach potomnych utworzonych przez fork w procesie macierzystym – proces ten powinien wczesniej utworzyc i zainicjowac semafory oraz pamiec dzielona, a po utworzeniu procesow potomnych zaczekac na ich zakonczenie, po czym zrobic odpowiednie porzadki. Podobnie jak w cwiczeniu 6, usuwanie obiektu pamieci dzielonej oraz semaforow umiescic w funkcji zarejestrowanej przez atexit oraz funkcji obslugi sygnalu SIGINT. Bufor jednostek towaru mozna zdefiniowac (najlepiej we wspolnym pliku naglowkowym) jako tablice dwuwymiarowa i umiescic ja wewnatrz struktury wraz z iteratorami dla producenta i konsumenta.
+
+-----------------------------------------------------------------------
+ZAWARTOSC:
+
+Katalog zawiera plik makefile, plik "zad7", plik "konsument", plik "producent", plik "in.txt", bedacy towarem wysylanym przez bufor umieszczony w pamieci wspoldzielonej, a takze pliki biblioteczne do obslugi semaforow ("semafory.cpp", "semafory.hpp") i pamieci dzielonej ("pamiecdzielona_lib.cpp", "pamiecdzielona_lib.hpp").
+
+------------------------------------------------------------------------
+URUCHAMIANIE:
+
+Katalog zawiera plik MakeFile do kompilacji i linkowania programow
+- komenda "make all" kompiluje i linkuje wszystkie programy
+- komenda "make clean" usuwa zbedne pliki
+- komenda "make tar" kompresuje katalog
+- komenda "make run" uruchamia program zad7, a po jego zakonczeniu porownuje plik wejsciowy i wyjsciowy i usuwa ten drugi. Aby dzialala, plik wejsciowy musi nazywac sie "in.txt", a wyjsciowy "out.txt".
+
+Aby uruchomic recznie program, nalezy wprowadzic dwa argumenty wejsciowe - pierwszy to nazwa pliku wejsciowego, drugi to nazwa pliku wyjsciowego; jesli ten nie bedzie istnial, zostanie utworzony.

@@ -1,0 +1,21 @@
+Krzysztof Czarnowus, grupa 1, 4.06.2023 r.
+
+-----------------------------------------------------------------------
+POLECENIE:
+
+Przy pomocy P-watkow zaimplementowac algorytm piekarni.
+
+-----------------------------------------------------------------------
+ZAWARTOSC:
+
+Katalog zawiera plik makefile, plik "zad10.cpp" oraz pliki biblioteczne "watki.cpp" oraz "watki.hpp"
+
+------------------------------------------------------------------------
+URUCHAMIANIE:
+
+Katalog zawiera plik MakeFile do kompilacji i linkowania programow
+- komenda "make all" kompiluje i linkuje wszystkie programy
+- komenda "make clean" usuwa zbedne pliki
+- komenda "make tar" kompresuje katalog
+
+Uruchamiajac skompilowany program zad10, nalezy podac mu dwa arguementy - liczbe tworzonych watkow oraz ilosc sekcji krytycznych, ktore ma wykonac kazdy watek.

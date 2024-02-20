@@ -1,0 +1,23 @@
+Krzysztof Czarnowus, grupa 1, 12.04.2023 r.
+
+------------------------------------------------------------------------
+POLECENIE:
+
+Przy pomocy potokow nienazwanych systemu UNIX zaimplementowac problem "Producenta i konsumenta”. Dla zademonstrowania, ze nie doszlo do utraty ani zwielokrotnienia towaru, niech Producent pobiera "surowiec” (np. porcje bajtow) z pliku tekstowego i wstawia go jako towar do potoku, a Konsument niech umieszcza pobrany z potoku towar w innym pliku tekstowym (porcje danych Producenta i Konsumenta nie musza byc rowne). Po zakonczeniu dzialania programow (wyczerpaniu zasobow ,,surowca”) oba pliki tekstowe powinny byc identyczne (mozna to sprawdzic poleceniem diff -s, ktore najlepiej umiescic w pliku Makefile po poleceniu uruchomienia programu). Oba procesy niech drukuja odpowiednie komunikaty na ekranie, w tym towar, ktory przesylaja. Do zasymulowania roznych szybkosci dzialania programow uzyc funkcji sleep, np. z losowym czasem usypiania. Do czytania/pisania danych z/do pliku tekstowego, jak rowniez wypisywania ich na ekran uzyc funkcji read i write.
+
+
+------------------------------------------------------------------------
+ZAWARTOSC:
+
+Katalog zawiera plik makefile, plik "zad4", plik "konsument" oraz plik "in.txt", bedacy towarem wysylanym potokiem miedzy producentem (zad4) a konsumentem (konsument)
+
+------------------------------------------------------------------------
+URUCHAMIANIE:
+
+Katalog zawiera plik MakeFile do kompilacji i linkowania programow
+- komenda "make all" kompiluje i linkuje wszystkie programy
+- komenda "make clean" usuwa zbedne pliki
+- komenda "make tar" kompresuje katalog
+- komenda "make run" uruchamia program zad4, a po jego zakonczeniu porownuje plik wejsciowy i wyjsciowy i usuwa ten drugi. Aby wlasciwie dzialala, plik wejsciowy musi miec nazwe "in.txt"
+
+Aby uruchomic recznie program, nalezy wprowadzic dwa argumenty wejsciowe - pierwszy to nazwa pliku wejsciowego do potoku, drugi to nazwa pliku wyjsciowego; jesli ten nie bedzie istnial, zostanie utworzony.

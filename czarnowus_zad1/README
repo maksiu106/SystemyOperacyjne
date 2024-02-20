@@ -1,0 +1,23 @@
+Krzysztof Czarnowus, grupa 1, 19.03.2023 r.
+
+------------------------------------------------------------------------
+POLECENIE:
+
+(a) Napisac program wypisujacy identyfikatory UID, GID, PID, PPID i PGID dla danego procesu.
+(b) Wywolac funkcje fork trzy razy (najlepiej w petli for) i wypisac powyzsze identyfikatory dla procesu macierzystego oraz wszystkich procesow potomnych. Przy pomocy funkcji wait sprawic, aby proces macierzysty zaczekal na zakonczenie wszystkich procesow potomnych.
+(c) Jak w (b), tylko przy uzyciu funkcji sleep (! nie uzywac funkcji wait) sprawiac by procesy potomne byly adoptowane przez proces init lub systemd.
+(d) Jak w (b), tylko wstawic funkcje sleep w takich miejscach programu, aby procesy pojawialy sie na ekranie grupowane pokoleniami od najstarszego do najmlodszego, a proces macierzysty konczyl sie dopiero po procesach potomnych
+(e) Jak w (b), tylko przy uzyciu fukcji setpgid sprawic by kazdy proces potomny stawal sie liderem swojej wlasnej grupy procesow.
+
+------------------------------------------------------------------------
+ZAWARTOSC:
+
+- katalog zawiera wszystkie podpunkty zadania 1, zatytuowane "zad1a", "zad1b", itp.
+
+------------------------------------------------------------------------
+URUCHAMIANIE:
+
+- katalog zawiera plik MakeFile do kompilacji i linkowania programow, analogiczny do przykladowego pliku podeslanego na cwiczeniach;
+- komenda "make all" kompiluje i linkuje wszystkie programy
+- komenda "make clean" usuwa zbedne pliki
+- komenda "make tar" kompresuje katalog

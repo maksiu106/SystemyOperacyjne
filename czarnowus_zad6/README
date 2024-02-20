@@ -1,0 +1,33 @@
+Krzysztof Czarnowus, grupa 1, 14.05.2023 r.
+
+-----------------------------------------------------------------------
+POLECENIE:
+
+Przy pomocy semaforow nazwanych standardu POSIX zaimplementowac zadanie wzajemnego wykluczania dla procesow. Czas operacji na wspolnym zasobie symulowac uzywajac np. funkcji sleep. Dla demonstracji poprawnosci dzialania programu uzywac odpowiednich komunikatow wypisywanych przez poszczegolne procesy przed, w trakcie i po sekcji krytycznej oraz funkcji podajacej wartosc semafora. Pamietac o zainicjowaniu semafora odpowiednia wartoscia zaraz po jego utworzeniu.
+
+Stworzyc wlasna biblioteke prostych w uzyciu funkcji do tworzenia, otwierania, uzyskiwania wartosci, operowania, zamykania i usuwania semafora – korzystajac z odpowiednich funkcji systemowych/bibliotecznych i zawierajac obsluge bledow.
+
+Napisac specjalny program do powielania procesow realizujacych wzajemne wykluczanie – w oparciu o funkcje fork i execlp (nazwe programu do inicjowania procesow, liczbe procesow oraz liczbe sekcji krytycznych/prywatnych kazdego procesu przekazywac przez argumenty programu "powielacza"). Program ten powinien na poczatku utworzyc i zainicjowac semafor, a na koncu – kiedy wszystkie jego procesy potomne zakoncza swoje dzialanie – usunac go.
+
+Semafor usuwac w funkcji rejestrowanej przez funkcje atexit (zwracac uwage, kiedy nalezny wywolac funkcje exit, a kiedy exit). Dodac rowniez mozliwosc usuwania semafora w funkcji obslugi sygnalu SIGINT, na wypadek gdyby program trzeba bylo zakonczyc sekwencja klawiszy Ctrl-C.
+
+W celu weryfikacji poprawnosci wzajemnego wykluczania procesow program "powielacz" na samym poczatku stworzyc plik tekstowy numer.txt i wpisac w nim numer o wartosci 0 (zero), a program implementujacy wzajemne wykluczanie w swojej sekcji krytycznej odczytac wartosc zapisanego w tym pliku numeru, nastepnie zwiekszyc go o 1 i po losowej (np. funkcja rand) chwili czasu zapisac z powrotem do pliku. Po zakonczeniu dzialania wszystkich procesow realizujacych wzajemne wykluczanie program "powielacz" powinien sprawdzic poprawność końcowego numeru zapisanego w pliku i wypisać odpowiedni komunikat.
+
+-----------------------------------------------------------------------
+ZAWARTOSC:
+
+- katalog zawiera programy wykonujace polecenia z zadania 6 oraz prosta biblioteke "semafory", zawierajaca podstawowe operacje na semaforach
+
+------------------------------------------------------------------------
+URUCHAMIANIE:
+
+- katalog zawiera plik MakeFile do kompilacji i linkowania programow, analogiczny do przykladowego pliku podeslanego na cwiczeniach;
+- komenda "make all" kompiluje i linkuje wszystkie programy
+- komenda "make clean" usuwa zbedne pliki
+- komenda "make tar" kompresuje katalog
+
+------------------------------------------------------------------------
+DZIALANIE PROGRAMOW:
+
+Aby uruchomic program z zadania 6 nalezy podac mu jako pierwszy argument nazwe programu (w tym wypadku: "potomny"), a jako drugi i trzeci odpowiednio liczbe procesow potomnych, jakie maja powstac, oraz liczba powtorzen sekcji krytycznej, jaka kazdy proces potomny ma wykonac. Program tworzy plik zawierajacy "0", stopniowo odczytuje, dodaje i zapisuje kolejne wartosci, a na koncu porownuje spodziewana i faktyczna liczbe otrzymana w pliku, wypisuje je i usuwa go.
+

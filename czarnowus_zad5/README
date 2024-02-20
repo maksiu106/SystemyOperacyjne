@@ -1,0 +1,47 @@
+Krzysztof Czarnowus, grupa 1, 12.04.2023 r.
+
+-----------------------------------------------------------------------
+POLECENIE:
+
+Implementacja problemu producent-konsument, tak jak w Zadaniu 4.
+
+Najlepiej zaimplementowac producenta i konsumenta w dwoch oddzielnych programach - kazdy z nich powinien pobierac nazwe potoku oraz nazwe odpowiedniego pliku tekstowego przez argumenty wywolania. Potok nazwany - tak jak plik - przed uzyciem nalezy otworzyc funkcja open(), a po uzyciu zamknac funkcja close().
+
+W podpunkcie a) napisac dodatkowy program, ktory utworzy potok nazwany, nastepnie przy pomocy funkcji fork() utworzy dwa procesy potomne, w ktorych przy uzyciu wywolania exec uruchomi odpowiednio programy producenta  i konsumenta, a na końcu poczeka na ich zakończenie i usunie potok (nazwy plikow wykonawczych dla exec przekazywac przez argumenty wywolania programu).
+
+Potok usuwac w funkcji zarejestrowanej przez funkcje atexit(). Zwrocic uwage na to, gdzie nalezy wywolac funkcje exit(), a gdzie _exit() - by nie usuwac potoku, ktory nie zostal jeszcze utworzony lub nie usuwac go wiecej niz raz! Dodatkowo, mozna dodac obsluge sygnalu SIGINT, ktora bedzie usuwac potok - na wypadek gdyby program trzeba bylo zakończyc sekwencja klawiszy Ctrl-C.
+
+W podpunkcie b) potok nazwany utworzyc z poziomu powloki, nastepnie uruchomic programy producenta i konsumenta z roznych terminali, a na końcu z poziomu powloki usunac potok.
+
+Programy producenta  i konsumenta niech wypisuja na ekranie komunikaty o przesylanych danych, jak w Zadaniu 4; na końcu sprawdzic poprawnosc wykonania programow przez porownanie pliku danych producenta z plikiem wynikow konsumenta, np. przy pomocy polecenia diff.
+
+-----------------------------------------------------------------------
+ZAWARTOSC:
+
+Katalog zawiera pliki:
+- zad5, tworzacy potok nazwany i uruchamiajacy producenta i konsumenta w procesach potomnych
+- prod, bedacy producentem potoku nazwanego o nazwie "potok" znajdujacego sie w jego lokalizacji
+- kons, bedacy konsumentem potoku nazwanego o nazwie "potok" znajdujacego sie w jego lokalizacji
+- in.txt, bedacy towarem przesylanym przez potok
+
+------------------------------------------------------------------------
+URUCHAMIANIE:
+
+Katalog zawiera plik MakeFile do kompilacji i linkowania programow
+- komenda "make all" kompiluje i linkuje wszystkie programy
+- komenda "make clean" usuwa zbedne pliki
+- komenda "make tar" kompresuje katalog
+
+Zadanie 5A
+Po kompilacji nalezy uruchomic program "zad5" z dwoma argumentami - pierwszy to nazwa pliku txt wejsciowego, drugi nazwa pliku wyjsciowego. Po jego uruchomieniu mozna z poziomu powloki porownac pliki komenda:
+
+diff -s [nazwa pliku wejsciowego] [nazwa pliku wyjsciowego]
+
+Zadanie 5B
+Z poziomu powloki nalezy za pomoca komendy "mkfifo potok" utworzyc potok (koniecznie o takiej nazwie), po czym niezaleznie od siebie w dwoch roznych powlokach uruchomic programy z odpowiednimi argumentami wywolania:
+
+./prod in.txt
+
+./kons out.txt
+
+Po wszystkim mozliwe jest porownanie tych plikow jak wyzej.

@@ -1,0 +1,28 @@
+Krzysztof Czarnowus, grupa 1, 16.05.2023 r.
+
+-----------------------------------------------------------------------
+POLECENIE:
+
+Proces klienta wysyla do procesu serwera zadanie wykonania dzialania arytmetycznego na dwoch liczbach postaci: liczba operator liczba, np. 2 + 3. Serwer wykonuje odpowiednie dzialanie i odsyla wynik do klienta. Klient odbiera ten wynik i wypisuje go na ekranie. Poslugujac sie mechanizmem kolejek komunikatow standardu POSIX zaimplementowac powyzsze zadanie typu klient–serwer z mozliwoscia obslugi przez serwera wielu klientow naraz.
+
+Niech serwer utworzy kolejke komunikatow w trybie do odbierania o nazwie zdefiniowanej we wspolnym pliku naglowkowym dolaczanym w plikach zrodlowych programow serwera i klienta. Do tej kolejki klient bedzie wysylal swoje komunikaty, a serwer bedzie je z niej odbieral. Klient z kolei niech utworzy kolejke komunikatow w trybie do odbierania o nazwie /PID, gdzie PID jest jego identyfikatorem procesu PID, np. /17895 (do utworzenia tej nazwy uzyc np. funkcji snprintf). Nastepnie niech klient otworzy kolejke serwera w trybie do nadawania komunikatow i w petli wczytuje z klawiatury zadane dzialanie (np. uzywajac funkcji fgets), tworzy komunikat umieszczajac na poczatku swoj PID, a po nim wczytane wyrazenie (np. przy pomocy funkcji snprintf), po czym wysyla taki komunikat do kolejki serwera. Petle mozna zakończyc znakiem końca pliku EOF (z klawiatury wysyla sie go sekwencja klawiszy [Ctrl D]), po czym klient powinien zamknac i usunac wlasna kolejke oraz zamknac kolejke serwera – czynnosci te umiescic w funkcji rejestrowanej przez atexit oraz w obsludze sygnalu SIGINT.
+
+Serwer niech dziala w petli nieskończonej (proces demon), probujac odbierac komunikaty ze swojej kolejki. Po otrzymaniu komunikatu od klienta, serwer powinien odczytac z niego PID klienta (np. funkcja atoi) i otworzyc kolejke klienta w trybie do nadawania komunikatow o nazwie postaci /PID (uzyc np. funkcji snprintf). Nastepnie z komunikatu powinien odczytac odpowiednie dzialanie (mozna uzyc np. funkcji sscanf), wykonac je i odeslac wynik w komunikacie (uzyc np. funkcji snprintf) do kolejki klienta, po czym zamknac te kolejke. Proces serwera mozna zakończyc np. sygnalem SIGINT (z klawiatury sekwencja klawiszy [Ctrl C]), z tym ze serwer powinien przechwycic ten sygnal i wykonac jego obsluge polegajaca na zamknieciu i usunieciu wlasnej kolejki komunikatow – czynnosci te umiescic w funkcji rejestrowanej przez atexit.
+
+Niech procesy serwera i klienta wypisuja na ekranie odpowiednie komunikaty, w szczegolnosci atrybuty kolejek komunikatow zaraz po ich utworzeniu.
+
+-----------------------------------------------------------------------
+ZAWARTOSC:
+
+Katalog zawiera plik makefile, plik "serwer.cpp", plik "klient.cpp" oraz pliki biblioteczne "kolejki.cpp" oraz "kolejki.hpp"
+
+------------------------------------------------------------------------
+URUCHAMIANIE:
+
+Katalog zawiera plik MakeFile do kompilacji i linkowania programow
+- komenda "make all" kompiluje i linkuje wszystkie programy
+- komenda "make clean" usuwa zbedne pliki
+- komenda "make tar" kompresuje katalog
+- komenda "make run" uruchamia program, tworzac jeden serwer i dwoch klientow
+
+W programach klientow nalezy wpisywac dzialania w formacie [LICZBA][ZNAK][LICZBA], gdzie znak jest znakim dzialania - dodawania, odejmowania, mnozenia lub dzielenia liczb typu float.

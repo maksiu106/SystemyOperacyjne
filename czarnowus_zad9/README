@@ -1,0 +1,22 @@
+Krzysztof Czarnowus, grupa 1, 27.05.2023 r.
+
+-----------------------------------------------------------------------
+POLECENIE:
+
+Przy pomocy muteksow zaimplementowac zadanie wzajemnego wykluczania dla watkow. Do demonstracji dzialania programu mozna uzyc sekwencji sterujacych konsoli. Niech na przyklad watek wykonujacy swoja sekcje prywatna wypisuje odpowiedni komunikat po lewej stronie okna konsoli, natomiastbedac w sekcji krytycznej drukuje informacje po prawej stronie (w tym samym wierszu). Kazdy watek moze kilka razy powtarzac powyzszy cykl. Przy poprawnie zrealizowanym zadaniu wzajemnego wykluczania, po prawej stronie okna konsoli w danym momenciepowinien zgloszac sie co najwyzej jeden watek, pozostale natomiast powinny zgloszac sie po lewej stronie (kazdy watek w ustalonym wierszu okna terminala). Do zademonstrowania operacji na zasobie dzielonym uzyc np. wspolnej (globalnej) zmiennej licznikowej, zainicjowanej wartoscia 0. Niech kazdy z watkow na poczatku sekcji krytycznej przypisuje jej wartosc swojemu prywatnemu licznikowi, nastepnie zwieksza wartosc tego prywatnego licznika o 1, a po pewnym czasie (uzyc np. funkcji sleep) przypisuje jego wartosc wspolnemu licznikowi.
+
+-----------------------------------------------------------------------
+ZAWARTOSC:
+
+Katalog zawiera plik makefile, plik "zad9.cpp" oraz pliki biblioteczne "watki.cpp" oraz "watki.hpp"
+
+------------------------------------------------------------------------
+URUCHAMIANIE:
+
+Katalog zawiera plik MakeFile do kompilacji i linkowania programow
+
+- komenda "make all" kompiluje i linkuje wszystkie programy
+- komenda "make clean" usuwa zbedne pliki
+- komenda "make tar" kompresuje katalog
+
+Uruchamiajac skompilowany program zad9, nalezy podac mu dwa arguementy - liczbe tworzonych watkow oraz ilosc sekcji krytycznych, ktore ma wykonac kazdy watek.

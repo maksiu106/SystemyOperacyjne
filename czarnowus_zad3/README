@@ -1,0 +1,43 @@
+Krzysztof Czarnowus, grupa 1, 3.04.2023 r.
+
+------------------------------------------------------------------------
+POLECENIE:
+
+(a) Napisz program do obslugi sygnalow z mozliwosciami: (1) wykonania operacji domyslnej, (2) ignorowania oraz (3) przechwycenia i wlasnej obslugi sygnalu. Do oczekiwania na sygnal uzyj funkcji pause. Uruchom program i wysylaj do niego sygnaly przy pomocy sekwencji klawiszy oraz przy pomocy polecenia kill z poziomu powloki.
+(b) Uruchom powyzszy program poprzez funkcje execlp w procesie potomnym innego procesu (z uzyciem funkcji fork) i wysylaj do niego sygnaly poprzez funkcje systemowa kill z procesu macierzystego.  Proces macierzysty powinien zaczekac na zakonczenie swojego potomka przy pomocy funkcji wait, a nastepnie wypisac jego PID i status zakonczenia zwracane przez ta funkcje. W przypadku zakonczenia procesu potomnego przez sygnal powinien wypisac dodatkowo numer tego sygnalu zawarty w statusie zakonczenia, a takze jego nazwe (uzyc funkcji strsignal).
+(c) W procesie macierzystym utworz proces potomny i spraw, aby stal sie liderem nowej grupy procesow (funkcja setpgid), a nastepnie poprzez funkcje execlp uruchom w nim program tworzacy kilka procesow potomnych, ktore (poprzez execlp) wykonuja program do obslugi sygnalow z punktu (a). Z pierwszego procesu macierzystego wysylaj sygnaly do calej grupy procesow potomnych po uprzednim sprawdzeniu jej istnienia. Identyfikator tej grupy procesow uzyskaj przy pomocy funkcji getpgid. Proces bedacy liderem grupy procesow niech ignoruje sygnaly, a na koncu czeka na zakonczenie wszystkich swoich procesow potomnych i wypisuje ich identyfikatory PID oraz status zakonczenia (zwracane przez wait), a w przypadku zakonczenia tych procesow przez sygnal – rowniez numer i nazwe odpowiedniego sygnalu. Pierwszy proces macierzysty rowniez powinien zaczekac na zakonczenie swojego bezposredniego potomka i wypisac jego PID oraz status zakonczenia zwracane przez odpowiednia funkcje wait.
+
+------------------------------------------------------------------------
+ZAWARTOSC:
+
+- katalog zawiera programy wykonujace podpunkty zadania 3
+
+------------------------------------------------------------------------
+URUCHAMIANIE:
+
+- katalog zawiera plik MakeFile do kompilacji i linkowania programow, analogiczny do przykladowego pliku podeslanego na cwiczeniach;
+- komenda "make all" kompiluje i linkuje wszystkie programy
+- komenda "make clean" usuwa zbedne pliki
+- komenda "make tar" kompresuje katalog
+
+------------------------------------------------------------------------
+DZIALANIE PROGRAMOW:
+
+zad3a
+
+Programowi nalezy podac parametry startowe podczas jego wywolywania; ma ono postac: "./zad3a [METODA] [NUMER SYGNALU]".
+W miejsce [NUMER SYGNALU] nalezy wprowadzic numer odpowiadajacy sygnalowi, na ktory program powinien sie przygotowac,
+podczas gdy zamiast [METODA] trzeba wybrac sposob, w jaki program ma reagowac na ten sygnal:
+1 - dzialanie domyslne;		2 - ignorowanie;	 3 - wlasna obsluga sygnalu;
+Przy czym wlasna obsluga sygnalu polega na wypisaniu na ekran, ze proces wykonuje wlasna obsluge sygnalu.
+Nastepnie wysylajac do procesu wybrany sygnal z poziomu powloki mozna obserwowac, jak proces realizuje jego zadana obsluge.
+
+zad3b
+
+Program nalezy wywolac z dwoma argumentami, podobnie jak zad3a.
+Program tworzy proces macierzysty, uruchamiajacy program zad3a, po czym wysyla do niego zadany sygnal,
+zbiera informacje o statusie jego zakonczenia i wypisuje ja.
+
+zad3c
+
+Program nalezy wywolac z dwoma argumentami, podobnie jak zad3a.

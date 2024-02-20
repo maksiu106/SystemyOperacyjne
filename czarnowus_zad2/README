@@ -1,0 +1,28 @@
+Krzysztof Czarnowus, grupa 1, 19.03.2023 r.
+
+------------------------------------------------------------------------
+POLECENIE:
+
+Zmodyfikowac program z cwiczenia 1b, tak aby komunikaty procesow potomnych byly wypisywane przez program uruchamiany przez funkcje execlp. Nazwe programu do uruchomienia przekazywac przez argumenty programu procesu macierzystego.
+
+------------------------------------------------------------------------
+ZAWARTOSC:
+
+- katalog zawiera program wykonujacy zadanie 2 "zad2" oraz program, do ktorego ten sie odwoluje w funkcji exec, "wypisz"
+
+------------------------------------------------------------------------
+URUCHAMIANIE:
+
+- katalog zawiera plik MakeFile do kompilacji i linkowania programow, analogiczny do przykladowego pliku podeslanego na cwiczeniach;
+- komenda "make all" kompiluje i linkuje wszystkie programy
+- komenda "make clean" usuwa zbedne pliki
+- komenda "make tar" kompresuje katalog
+
+------------------------------------------------------------------------
+ODPOWIEDZ NA PYTANIE:
+
+n-krotne wywolanie funkcji fork-exec doprowadzi do powstania n programow.
+wynika to z tego, ze funkcja exec, wywolywana w kazdym procesie potomnym, spowoduje "zastapienie" procesu uruchamianym programem.
+w zwiazku z tym kazdy z procesow potomnych znika natychmiast po wypisaniu swoich identyfikatorow.
+przy kazdej kolejnej iteracji petli funkcja fork duplikuje zatem jedyny wciaz wykonywany proces, a wiec proces macierzysty.
+dlatego tez sam proces macierzysty wypisywany jest dopiero na koncu.
