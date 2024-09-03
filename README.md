@@ -1,1 +1,1 @@
-Sprawozdania z ćwiczeń wykonywanych w ramach przedmiotu Systemy Operacyjne podczas studiowania Informatyki Stosowanej na Uniwersytecie Jagiellońskim w roku akademickim 2022/23 w grupie ćwiczeniowej prowadzonej przez mgre Bartosza Sobola.
+Sprawozdania z ćwiczeń wykonywanych w ramach przedmiotu Systemy Operacyjne podczas studiowania Informatyki Stosowanej na Uniwersytecie Jagiellońskim w roku akademickim 2022/23 w grupie ćwiczeniowej prowadzonej przez mgra Bartosza Sobola.
